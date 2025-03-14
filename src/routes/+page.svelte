@@ -6,12 +6,19 @@
   import { Editor, EditorContent, createEditor } from '$lib';
   import Placeholder from '@tiptap/extension-placeholder';
 
-  import { SvelteCounterExtension, SvelteEditableExtension } from './_components/SvelteExtension';
+  import {
+    SlashCommandExtension,
+    SvelteCounterExtension,
+    SvelteEditableExtension,
+  } from './_components/SvelteExtension';
+  import SlashCommand from './_components/SlashCommand';
 
   const extensions = [
     StarterKit,
     SvelteCounterExtension,
     SvelteEditableExtension,
+    SlashCommandExtension,
+    SlashCommand,
     Placeholder.configure({ placeholder: 'Write something...' }),
   ];
 

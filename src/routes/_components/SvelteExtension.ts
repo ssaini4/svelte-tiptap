@@ -3,6 +3,7 @@ import { SvelteNodeViewRenderer } from '$lib';
 
 import CounterComponent from './Counter.svelte';
 import EditableComponent from './Editable.svelte';
+import SlashCommand from './SlashCommand';
 
 export const SvelteCounterExtension = Node.create({
   name: 'SvelteCounterComponent',
@@ -50,3 +51,23 @@ export const SvelteEditableExtension = Node.create({
     return SvelteNodeViewRenderer(EditableComponent);
   },
 });
+
+
+export const SlashCommandExtension = Node.create({
+  name: 'SlashCommandComponent',
+  group: 'block',
+  content: 'inline*',
+  draggable: false,
+
+  parseHTML() {
+    return [{ tag: 'svelte-slash-command' }];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return ['svelte-slash-command', mergeAttributes(HTMLAttributes), 0];
+  },
+
+  addNodeView() {
+    return SvelteNodeViewRenderer(SlashCommand);
+  },
+})
